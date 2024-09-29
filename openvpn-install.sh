@@ -117,12 +117,12 @@ if [[ ! -e /etc/openvpn/server/server.conf ]]; then
 	# Detect some minimal setups where neither wget nor curl are installed
 	if [[ "$os" = "alpine" ]] && ( ! hash curl || ! hash iptables ) 2>/dev/null; then
 		echo "curl and iptables are required to use this installer."
-		read -n1 -r -p "Press any key to install curl and iptables and continue..."
+		
 		apk update
 		apk add curl iptables
 	elif ! hash wget 2>/dev/null && ! hash curl 2>/dev/null; then
 		echo "Wget is required to use this installer."
-		read -n1 -r -p "Press any key to install Wget and continue..."
+		
 		apt-get update
 		apt-get install -y wget
 	fi
